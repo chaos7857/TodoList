@@ -14,8 +14,7 @@ public class ThingOpenHelper extends SQLiteOpenHelper {
         db.execSQL("create table thing(_id integer primary key autoincrement,title varchar(20),des varchar(50))");
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    @Override    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 }

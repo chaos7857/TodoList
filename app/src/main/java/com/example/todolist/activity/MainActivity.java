@@ -1,7 +1,9 @@
 package com.example.todolist.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -51,10 +53,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initUI() {
         list_view = findViewById(R.id.list_view);
         findViewById(R.id.add).setOnClickListener(this);
+        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("aaaaaaaaaaaaaaaaa",position+"");
+                Log.e("aaaaaaaaaaaaaaaaa",id+"");
+                showDeleteDialog(id);
+                return false;
+            }
+        });
+    }
+
+    private void showDeleteDialog(long id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog alertDialog = builder.create();
+        View view = View.inflate(getApplicationContext(), R.layout.dialog_delete, null);
+        alertDialog.setView(view);
+        alertDialog.show();
+
+        view.findViewById(R.id.cancel_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        view.findViewById(R.id.confirm_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThingDao thingDao = ThingDao.getInstance(getApplicationContext());
+                thingDao.delete(id);
+                initData();
+                alertDialog.dismiss();
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
+        Log.d("aaaaaaa",v.getId()+"");
         if (v.getId() == R.id.add) {
             showAlertDialog();
         }

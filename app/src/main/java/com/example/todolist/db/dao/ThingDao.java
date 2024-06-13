@@ -39,6 +39,11 @@ public class ThingDao {
     }
 
     // 删
+    public void delete(long id){
+        SQLiteDatabase db = thingOpenHelper.getWritableDatabase();
+        db.delete("thing","_id=?",new String[]{id+""});
+        db.close();
+    }
     // 改
     // 查
     public List<Thing> findAll(){
