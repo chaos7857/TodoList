@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initUI() {
         list_view = findViewById(R.id.list_view);
         findViewById(R.id.add).setOnClickListener(this);
+        // 长按事件
+//         TODO：短按
         list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("aaaaaaaaaaaaaaaaa",position+"");
-                Log.e("aaaaaaaaaaaaaaaaa",id+"");
+                Log.e("onItemLongClickPosition",position+"");
+                Log.e("onItemLongClickId",id+"");
                 showDeleteDialog(id);
                 return false;
             }

@@ -6,17 +6,26 @@
     android:padding="16dp">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/add"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
     <EditText
-        android:layout_width="match_parent"
         android:id="@+id/et_title"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:hint="@string/title" />
 
     <EditText
+        android:id="@+id/et_des"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/et_des"
         android:layout_weight="2"
         android:hint="@string/des" />
 
@@ -24,12 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/confirm"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/confirm" />
 
         <Button
             android:id="@+id/cancel"
@@ -37,6 +40,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/confirm" />
 
     </LinearLayout>
 </LinearLayout>
